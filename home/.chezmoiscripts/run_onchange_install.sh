@@ -8,6 +8,7 @@ arch_install()
     zsh-syntax-highlighting zsh-autosuggestions \
     fzf
 
+    # Install if not root profile
     if [ "$EUID" -ne 0 ]
     then 
         install_yay
