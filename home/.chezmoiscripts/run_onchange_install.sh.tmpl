@@ -8,16 +8,16 @@ arch_install()
     zsh-syntax-highlighting zsh-autosuggestions \
     fzf
 
-    if (whoami == root)
+    if [ "$EUID" -ne 0 ]
     then 
-        echo "You are root"
-    else
         install_yay
         yay -Syu
         yay -S --needed nerd-fonts-fira-code nerd-fonts-jetbrains-mono \
         ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols \
         ttf-font-awesome ttf-font-awesome-5 \
         ttf-weather-icons 
+    else
+        echo "You are root"
     fi
 }
 
