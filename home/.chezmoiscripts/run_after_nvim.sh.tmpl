@@ -1,0 +1,5 @@
+#!/bin/sh
+
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+[ $? -eq 0 ] && echo "Nvim Packer update successful" || echo "Nvim Packer update failed"

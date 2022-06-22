@@ -1,8 +1,10 @@
 [".config/nvim"]
-    type = "git-repo"
-    url = "https://github.com/NvChad/NvChad.git"
+    type = "archive"
+    url = "https://github.com/NvChad/NvChad/archive/main.tar.gz"
+  # waiting for https://github.com/twpayne/chezmoi/issues/1614#issuecomment-966524408
+  # exact: true
+    stripComponents = 1
     refreshPeriod = "168h"
-
 [".config/powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k.git"
