@@ -1,0 +1,14 @@
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/NvChad/NvChad.git"
+    refreshPeriod = "168h"
+
+[".config/powerlevel10k"]
+    type = "git-repo"
+    url = "https://github.com/romkatv/powerlevel10k.git"
+    refreshPeriod = "168h"
+
+[".config/zsh/plugins/zsh-sudo/zsh-sudo.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh"
+    refreshPeriod = "168h"
