@@ -16,10 +16,10 @@ SAVEHIST=1000
 HISTFILE=~/.cache/.zsh_history
 
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
 
 # To customize prompt, run `p10k configure ` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh  
@@ -28,18 +28,18 @@ compinit
 # bindkey -e
 # export KEYTIMEOUT=1
 
-# Manual configuration
-
-PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
-
 # Manual aliases
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
-alias cat='bat'
 alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
+alias cat='bat'
+
+# ASDF DEFAULT
+ASDF_DIR="${ASDF_DIR:-$HOME/.asdf}"
+ASDF_COMPLETIONS="$ASDF_DIR/completions"
 
 # BAT DEFAULT
 export BAT_THEME="Catppuccin"
@@ -49,13 +49,27 @@ export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28F
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # Plugins
+
+source ~/.config/zsh/plugins/zsh-sudo/zsh-sudo.zsh
+source ~/.config/zsh/plugins/zsh-asdf/zsh-asdf.zsh
+
+{{- if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
+# Debian Plugins
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+{{- end }}
+{{- if eq .chezmoi.osRelease.id "arch" }}
+# Arch Plugin
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/.config/zsh/plugins/zsh-sudo/zsh-sudo.zsh
-
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# Manual configuration
+PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+{{- end }}
 
 # Functions
 function mkt(){
