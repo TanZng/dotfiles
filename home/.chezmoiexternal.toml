@@ -5,6 +5,7 @@
   # exact: true
     stripComponents = 1
     refreshPeriod = "168h"
+
 [".config/powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k.git"
@@ -14,3 +15,17 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh"
     refreshPeriod = "168h"
+
+[".config/zsh/plugins/zsh-asdf/zsh-asdf.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/asdf/asdf.plugin.zsh"
+    refreshPeriod = "168h"
+
+[".asdf"]
+    type = "git-repo"
+    url = "https://github.com/asdf-vm/asdf.git"
+    refreshPeriod = "168h"
+    [".asdf".pull]
+        args = ["--branch", "v0.10.2"]
+    [".asdf".clone]
+        args = ["--branch", "v0.10.2"]
