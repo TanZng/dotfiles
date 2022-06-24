@@ -3,9 +3,7 @@
 arch_install()
 {
     sudo pacman -Syu
-    sudo pacman -S --needed makepkg git base-devel \
-    kitty bat lsd zsh ripgrep fzf \
-    zsh-syntax-highlighting zsh-autosuggestions
+    sudo pacman -S --needed makepkg git base-devel kitty bat lsd zsh ripgrep fzf zsh-syntax-highlighting zsh-autosuggestions
 
     # Install if not root profile
     if [ "$EUID" -ne 0 ]

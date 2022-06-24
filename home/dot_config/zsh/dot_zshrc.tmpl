@@ -140,3 +140,5 @@ bindkey "^[[1;3D" backward-word
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
+[[-f $HOME/.ctx/ctx.sh ]] && . $HOME/.ctx/ctx.sh
+[[-f $HOME/.ctx/ctx_completion.sh ]] &&  . $HOME/.ctx/ctx_completion.sh
