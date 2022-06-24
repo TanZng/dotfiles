@@ -3,7 +3,7 @@
 arch_install()
 {
     sudo pacman -Syu
-    sudo pacman -S --needed makepkg git base-devel kitty bat lsd zsh ripgrep fzf zsh-syntax-highlighting zsh-autosuggestions
+    sudo pacman -S --needed makepkg git base-devel kitty bat lsd zsh ripgrep fzf glow zsh-syntax-highlighting zsh-autosuggestions
 
     # Install if not root profile
     if [ "$EUID" -ne 0 ]
@@ -37,6 +37,17 @@ debian_install()
     sudo apt install wget git zsh ripgrep fzf kitty \
     zsh-syntax-highlighting zsh-autosuggestions
 
+    # set zsh as default shell
+    sudo chsh -s $(which zsh)
+
+    # enable key bindings and auto-completion
+    sudo apt-cache show fzf
+
+    # install neovim
+    wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+    sudo apt install ./nvim-linux64.deb
+    rm nvim-linux64.deb
+
     # install lsd
     wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd_0.22.0_amd64.deb
     sudo dpkg -i lsd_0.22.0_amd64.deb
@@ -46,6 +57,11 @@ debian_install()
     wget https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb
     sudo dpkg -i bat_0.21.0_amd64.deb
     rm bat_0.21.0_amd64.deb
+
+    # install glow
+    wget https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_amd64.deb
+    sudo dpkg -i glow_1.4.1_linux_amd64.deb
+    rm glow_1.4.1_linux_amd64.deb
 }
 
 ###

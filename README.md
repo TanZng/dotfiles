@@ -28,6 +28,7 @@ Supported OS
 
 ### Tools
 
+> **Note**
 > Most tools are installed using the package manager (pacman, yay, apt, brew, winget, choco, etc) of the OS.
 
 ZSH
@@ -46,9 +47,12 @@ Utils
 - [lsd](https://github.com/Peltoche/lsd)
     - Debian - installed using [run_onchange_install.sh](/home/.chezmoiscripts/run_onchange_install.sh)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-<!-- - WIP [mdcat](https://codeberg.org/flausch/mdcat/) - only arch -->
+- [glow](https://github.com/charmbracelet/glow/)
 
 Neovim
+
+> **Warning**
+> Neovim must be version greater than 0.7.0 or it will not work
 
 - [NvChad](https://github.com/NvChad/NvChad) - installed using [.chezmoiexternal.toml](/home/.chezmoiexternal.toml)
 

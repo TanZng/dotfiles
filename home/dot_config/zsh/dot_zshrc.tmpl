@@ -36,6 +36,7 @@ alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
 alias cat='bat'
+alias glow='glow -s ~/.config/glow/Catppuccin.json'
 
 # ASDF DEFAULT
 ASDF_DIR="${ASDF_DIR:-$HOME/.asdf}"
@@ -140,5 +141,5 @@ bindkey "^[[1;3D" backward-word
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
-[[-f $HOME/.ctx/ctx.sh ]] && . $HOME/.ctx/ctx.sh
-[[-f $HOME/.ctx/ctx_completion.sh ]] &&  . $HOME/.ctx/ctx_completion.sh
+[[ -f $HOME/.ctx/ctx.sh ]] && . $HOME/.ctx/ctx.sh
+[[ -f $HOME/.ctx/ctx_completion.sh ]] &&  . $HOME/.ctx/ctx_completion.sh
