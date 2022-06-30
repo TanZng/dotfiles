@@ -24,13 +24,18 @@ arch_install()
 
 install_yay()
 {
-    mkdir /tmp/yay
-    cd /tmp/yay
-    curl -OJ 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay'
-    makepkg -si
-    cd -
-    rm -rf /tmp/yay
-    yay --version
+    # install yay
+    printf 'Install yay (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        mkdir /tmp/yay
+        cd /tmp/yay
+        curl -OJ 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay'
+        makepkg -si
+        cd -
+        rm -rf /tmp/yay
+        yay --version
+    fi
 }
 
 debian_install()
@@ -47,54 +52,96 @@ debian_install()
     sudo apt-cache show fzf
 
     # install neovim
-    wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
-    sudo apt install ./nvim-linux64.deb
-    rm nvim-linux64.deb
+    printf 'Install Neovim (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+        sudo apt install ./nvim-linux64.deb
+        rm nvim-linux64.deb
+    fi
 
     # install lsd
-    wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd_0.22.0_amd64.deb
-    sudo dpkg -i lsd_0.22.0_amd64.deb
-    rm lsd_0.22.0_amd64.deb
+    printf 'Install lsd (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd_0.22.0_amd64.deb
+        sudo dpkg -i lsd_0.22.0_amd64.deb
+        rm lsd_0.22.0_amd64.deb
+    fi
 
     # install bat
-    wget https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb
-    sudo dpkg -i bat_0.21.0_amd64.deb
-    rm bat_0.21.0_amd64.deb
+    printf 'Install bat (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        wget https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb
+        sudo dpkg -i bat_0.21.0_amd64.deb
+        rm bat_0.21.0_amd64.deb
+    fi
 
     # install glow
-    wget https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_amd64.deb
-    sudo dpkg -i glow_1.4.1_linux_amd64.deb
-    rm glow_1.4.1_linux_amd64.deb
+    printf 'Install glow (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        wget https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_amd64.deb
+        sudo dpkg -i glow_1.4.1_linux_amd64.deb
+        rm glow_1.4.1_linux_amd64.deb
+    fi
 
-    Install gtk, cursors and icons
+    # install gtk, cursors and icons
     get_catppuccin_theme
+
+    # install fonts
+    get_fonts
 }
 
 get_catppuccin_theme()
 {
-    # Install cursors
-    sudo mkdir -p /usr/share/icons/
-    cd /usr/share/icons/
-    sudo git clone https://github.com/catppuccin/cursors.git
-    sudo unzip './cursors/cursors/Catppuccin-Mocha-*.zip'
-    sudo rm -rf ./cursors
+    printf 'Install Catppuccin blue mocha gtk theme (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        # Install cursors
+        sudo mkdir -p /usr/share/icons/
+        cd /usr/share/icons/
+        sudo git clone https://github.com/catppuccin/cursors.git
+        sudo unzip './cursors/cursors/Catppuccin-Mocha-*.zip'
+        sudo rm -rf ./cursors
 
-    # Install icons and patch folders in mocha-blue color
-    sudo wget -qO- https://git.io/papirus-icon-theme-install | sudo sh
-    sudo git clone https://github.com/catppuccin/papirus-folders.git
-    sudo cp -r ./papirus-folders/src/* /usr/share/icons/Papirus
-    ./papirus-folders/papirus-folders -C cat-mocha-blue --theme Papirus-Dark
-    cd -
+        # Install icons and patch folders in mocha-blue color
+        sudo wget -qO- https://git.io/papirus-icon-theme-install | sudo sh
+        sudo git clone https://github.com/catppuccin/papirus-folders.git
+        sudo cp -r ./papirus-folders/src/* /usr/share/icons/Papirus
+        ./papirus-folders/papirus-folders -C cat-mocha-blue --theme Papirus-Dark
+        cd -
 
-    # Install GTK theme
-    sudo mkdir -p /usr/share/themes/
-    sudo mkdir -p ~/.themes
-    cd /usr/share/themes/
-    sudo wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-blue.zip
-    sudo unzip 'Catppuccin-blue.zip'
-    sudo unzip 'Catppuccin-blue.zip' -d ~/.themes
-    sudo rm Catppuccin-blue.zip
-    cd -
+        # Install GTK theme
+        sudo mkdir -p /usr/share/themes/
+        sudo mkdir -p ~/.themes
+        cd /usr/share/themes/
+        sudo wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-blue.zip
+        sudo unzip 'Catppuccin-blue.zip'
+        sudo unzip 'Catppuccin-blue.zip' -d ~/.themes
+        sudo rm Catppuccin-blue.zip
+        cd -
+    fi
+}
+
+get_fonts(){
+    printf 'Install fonts (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+        mkdir -p ~/.fonts
+        cd ~/.fonts
+        
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+        unzip FiraCode.zip -d FiraCode/
+        rm -rf FiraCode.zip
+
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+        unzip JetBrainsMono.zip -d JetBrainsMono/
+        rm -rf JetBrainsMono.zip
+
+        cd -
+    fi
 }
 
 ###

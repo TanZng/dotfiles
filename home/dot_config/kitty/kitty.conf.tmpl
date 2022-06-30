@@ -1,11 +1,13 @@
 include color.ini
 
-font_family      JetBrainsMono Nerd Font 
+font_family      FiraCode Nerd Font 
 font_size 13
 
+{{- if eq .chezmoi.osRelease.id "arch" }}
 #  "Nerd Fonts - Material Design Icons"
 symbol_map U+f500-U+fd46 Symbols Nerd Font
 
+{{- end }}
 disable_ligatures never
 
 url_style curly
