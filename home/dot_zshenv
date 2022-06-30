@@ -14,4 +14,4 @@ unsetopt PROMPT_SP
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-
+export ZSH_CACHE_DIR="$HOME/.zsh/.cache"
