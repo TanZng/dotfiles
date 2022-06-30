@@ -3,7 +3,7 @@
 arch_install()
 {
     sudo pacman -Syu
-    sudo pacman -S --needed makepkg git base-devel kitty bat lsd zsh ripgrep fzf glow zsh-syntax-highlighting zsh-autosuggestions
+    sudo pacman -S --needed makepkg git base-devel p7zip kitty bat lsd zsh ripgrep fzf glow zsh-syntax-highlighting zsh-autosuggestions
 
     # Install if not root profile
     if [ "$EUID" -ne 0 ]
@@ -17,6 +17,9 @@ arch_install()
     else
         echo "You are root"
     fi
+
+    # Install gtk, cursors and icons
+    get_catppuccin_theme
 }
 
 install_yay()
@@ -34,7 +37,7 @@ debian_install()
 {
     sudo apt update
     sudo apt upgrade
-    sudo apt install wget git zsh ripgrep fzf kitty \
+    sudo apt install wget git p7zip-full p7zip-rar zsh ripgrep fzf kitty \
     zsh-syntax-highlighting zsh-autosuggestions
 
     # set zsh as default shell
@@ -62,6 +65,36 @@ debian_install()
     wget https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_amd64.deb
     sudo dpkg -i glow_1.4.1_linux_amd64.deb
     rm glow_1.4.1_linux_amd64.deb
+
+    Install gtk, cursors and icons
+    get_catppuccin_theme
+}
+
+get_catppuccin_theme()
+{
+    # Install cursors
+    sudo mkdir -p /usr/share/icons/
+    cd /usr/share/icons/
+    sudo git clone https://github.com/catppuccin/cursors.git
+    sudo unzip './cursors/cursors/Catppuccin-Mocha-*.zip'
+    sudo rm -rf ./cursors
+
+    # Install icons and patch folders in mocha-blue color
+    sudo wget -qO- https://git.io/papirus-icon-theme-install | sudo sh
+    sudo git clone https://github.com/catppuccin/papirus-folders.git
+    sudo cp -r ./papirus-folders/src/* /usr/share/icons/Papirus
+    ./papirus-folders/papirus-folders -C cat-mocha-blue --theme Papirus-Dark
+    cd -
+
+    # Install GTK theme
+    sudo mkdir -p /usr/share/themes/
+    sudo mkdir -p ~/.themes
+    cd /usr/share/themes/
+    sudo wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-blue.zip
+    sudo unzip 'Catppuccin-blue.zip'
+    sudo unzip 'Catppuccin-blue.zip' -d ~/.themes
+    sudo rm Catppuccin-blue.zip
+    cd -
 }
 
 ###
