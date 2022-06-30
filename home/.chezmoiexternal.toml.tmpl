@@ -25,13 +25,17 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/minikube/minikube.plugin.zsh"
     refreshPeriod = "168h"
+
 {{- if eq .chezmoi.osRelease.id "arch" }}
+
 [".config/zsh/plugins/archlinux/zsh-archlinux.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/archlinux/archlinux.plugin.zsh"
     refreshPeriod = "168h"
 {{- end }}
+
 {{- if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
+
 [".config/zsh/plugins/debian/zsh-debian.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/debian/debian.plugin.zsh"
