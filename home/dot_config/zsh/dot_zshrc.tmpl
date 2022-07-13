@@ -54,7 +54,9 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 source ~/.config/zsh/plugins/zsh-sudo/zsh-sudo.zsh
 source ~/.config/zsh/plugins/zsh-asdf/zsh-asdf.zsh
 source ~/.config/zsh/plugins/zsh-asdf/zsh-asdf.zsh
+source ~/.config/zsh/plugins/kubectl/zsh-kubectl.zsh
 source ~/.config/zsh/plugins/minikube/zsh-minikube.zsh
+source ~/.config/zsh/plugins/helm/zsh-helm.zsh
 
 {{- if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 # Debian Plugins

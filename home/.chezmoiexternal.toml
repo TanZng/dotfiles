@@ -26,6 +26,11 @@
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/minikube/minikube.plugin.zsh"
     refreshPeriod = "168h"
 
+[".config/zsh/plugins/helm/zsh-helm.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/helm/helm.plugin.zsh"
+    refreshPeriod = "168h"
+
 {{- if eq .chezmoi.osRelease.id "arch" }}
 
 [".config/zsh/plugins/archlinux/zsh-archlinux.zsh"]

@@ -60,6 +60,11 @@ Development
 
 - [asdf](https://github.com/asdf-vm/asdf)- installed using [.chezmoiexternal.toml](/home/.chezmoiexternal.toml)
 
+Rofi
+
+- [rofi](https://github.com/davatorium/rofi)
+- [rofi-emoji](https://github.com/Mange/rofi-emoji)
+
 Fonts
 
 - JetbrainsMono Nerd Font

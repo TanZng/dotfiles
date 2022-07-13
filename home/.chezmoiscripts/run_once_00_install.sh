@@ -3,7 +3,7 @@
 arch_install()
 {
     sudo pacman -Syu
-    sudo pacman -S --needed makepkg git base-devel p7zip kitty bat lsd zsh ripgrep fzf glow zsh-syntax-highlighting zsh-autosuggestions
+    sudo pacman -S --needed makepkg git base-devel p7zip kitty bat lsd zsh ripgrep fzf rofi rofi-emoji glow zsh-syntax-highlighting zsh-autosuggestions
 
     # Install if not root profile
     if [ "$EUID" -ne 0 ]
@@ -43,7 +43,7 @@ debian_install()
     sudo apt update
     sudo apt upgrade
     sudo apt install wget git p7zip-full p7zip-rar zsh ripgrep fzf kitty \
-    zsh-syntax-highlighting zsh-autosuggestions
+    zsh-syntax-highlighting zsh-autosuggestions autoconf automake libtool-bin libtool rofi rofi-dev
 
     # set zsh as default shell
     sudo chsh -s $(which zsh)
@@ -92,6 +92,9 @@ debian_install()
 
     # install fonts
     get_fonts
+
+    # install rofi plugins
+    get_rofi_plugins
 }
 
 get_catppuccin_theme()
@@ -144,6 +147,26 @@ get_fonts(){
     fi
 }
 
+get_rofi_plugins(){
+    # Get rofi-emoji
+    printf 'Install rofi-emoji (y/n)? '
+    read answer
+        if [ "$answer" != "${answer#[Yy]}" ]; then
+        git clone https://github.com/Mange/rofi-emoji.git
+        cd rofi-emoji
+        autoreconf -i
+        mkdir build
+        cd build/
+        ../configure
+        make
+        sudo make install
+        cd ..
+        cd ..
+        rm -rf rofi-emoji/
+        cd
+   fi
+}
+
 ###
 # Main body of script starts here
 ###
@@ -155,10 +178,10 @@ if [ -f "/etc/os-release" ]; then
 fi
 
 if [ "$ID" = "arch" ]; then
-   echo "This is Arch!"
+   echo "This is Arch! "
    arch_install
 elif [ "$ID_LIKE" = "debian" ] || [ "$ID" = "ubuntu" ]; then
-   echo "This is Debian!"
+   echo "This is Debian! "
    debian_install
 else
    echo "No arch or debian"
