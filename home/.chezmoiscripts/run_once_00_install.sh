@@ -3,7 +3,7 @@
 arch_install()
 {
     sudo pacman -Syu
-    sudo pacman -S --needed makepkg git base-devel p7zip kitty bat lsd zsh ripgrep fzf rofi rofi-emoji glow zsh-syntax-highlighting zsh-autosuggestions
+    sudo pacman -S --needed makepkg git base-devel p7zip kitty bat lsd zsh ripgrep fzf rofi rofi-emoji glow
 
     # Install if not root profile
     if [ "$EUID" -ne 0 ]
@@ -43,7 +43,7 @@ debian_install()
     sudo apt update
     sudo apt upgrade
     sudo apt install wget git p7zip-full p7zip-rar zsh ripgrep fzf kitty \
-    zsh-syntax-highlighting zsh-autosuggestions autoconf automake libtool-bin libtool rofi rofi-dev
+    autoconf automake libtool-bin libtool rofi rofi-dev
 
     # set zsh as default shell
     sudo chsh -s $(which zsh)
