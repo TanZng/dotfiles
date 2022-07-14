@@ -123,6 +123,27 @@ bindkey "^[[1;3D" backward-word
 [[ -f $HOME/.ctx/ctx.sh ]] && . $HOME/.ctx/ctx.sh
 [[ -f $HOME/.ctx/ctx_completion.sh ]] &&  . $HOME/.ctx/ctx_completion.sh
 
-if command -v kitsch > /dev/null; then
-    eval "$(kitsch init zsh)"
-fi
+#bearings-auto:start
+function preexec() {
+  if [[ $OSTYPE == 'darwin'* ]]; then
+    btimer=$(($(date +%s)*1000))
+  else
+    btimer=$(($(date +%s%N)/1000000))
+  fi
+}
+function configure_bearings() {
+    last=$?
+    elapsed=0
+    if [ $btimer ]; then
+      if [[ $OSTYPE == 'darwin'* ]]; then
+        now=$(($(date +%s)*1000))
+      else
+        now=$(($(date +%s%N)/1000000))
+      fi
+      elapsed=$(($now-$btimer))
+      unset btimer
+    fi
+    PROMPT="$(bearings prompt -s zsh -e ${last} -d ${elapsed} -j $(jobs | wc -l))"
+}
+[ ! "$TERM" = "linux" ] && precmd_functions+=(configure_bearings)
+#bearings-auto:end

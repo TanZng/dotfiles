@@ -20,6 +20,9 @@ arch_install()
 
     # Install gtk, cursors and icons
     get_catppuccin_theme
+
+    # install shell promt
+    get_bearings
 }
 
 install_yay()
@@ -95,6 +98,9 @@ debian_install()
 
     # install rofi plugins
     get_rofi_plugins
+
+    # install shell promt
+    get_bearings
 }
 
 get_catppuccin_theme()
@@ -151,7 +157,7 @@ get_rofi_plugins(){
     # Get rofi-emoji
     printf 'Install rofi-emoji (y/n)? '
     read answer
-        if [ "$answer" != "${answer#[Yy]}" ]; then
+    if [ "$answer" != "${answer#[Yy]}" ]; then
         git clone https://github.com/Mange/rofi-emoji.git
         cd rofi-emoji
         autoreconf -i
@@ -164,6 +170,17 @@ get_rofi_plugins(){
         cd ..
         rm -rf rofi-emoji/
         cd
+   fi
+}
+
+get_bearings(){
+    # Get bearings
+    printf 'Install bearings (y/n)? '
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+    wget https://github.com/liamg/bearings/releases/download/v0.0.4/bearings-linux-amd64
+    mv bearings-linux-amd64 bearings && chmod +x bearings
+    sudo mv bearings /usr/bin/bearings
    fi
 }
 

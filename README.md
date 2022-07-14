@@ -15,6 +15,7 @@ Supported OS
 |||
 |-------|----|
 |Shell|zsh|
+|Shell Prompt|[bearings](https://github.com/liamg/bearings)|
 |Terminal|[Kitty](https://github.com/kovidgoyal/kitty)|
 |Editor|[Neovim](https://github.com/neovim/neovim)|
 |Theme|[Catppuccin](https://github.com/catppuccin)|
@@ -35,6 +36,7 @@ ZSH
 
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) - installed using `.chezmoiexternal`
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) - installed using `.chezmoiexternal`
+- [zsh-completions](https://github.com/zsh-users/zsh-completions) - installed using `.chezmoiexternal`
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - installed using `.chezmoiexternal`
 
 Utils

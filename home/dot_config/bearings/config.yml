@@ -1,0 +1,35 @@
+padding: 1
+end: ""
+divider: ""
+fg: "#f38ba8"
+bg: "#45475a"
+lines_above: 1
+modules:
+- type: exitcode
+  failure_bg: '#f38ba8'
+  failure_fg: '#45475a'
+  show_success: true
+  success_bg: '#a6e3a1'
+  success_fg: '#45475a'
+  success_output: " "
+- type: duration
+  bg: '#45475a'
+  fg: '#b4befe'
+  threshold: 3s
+- type: cwd
+  bg: '#74c7ec'
+  fg: '#45475a'
+  label:  %s
+  separator: "/"
+  max_depth: 2
+  deep_prefix: "..."
+- type: git
+  bg: '#313244'
+  fg: '#f9e2af'
+- type: command
+- type: languages
+- type: text
+  divider: ""
+- type: newline
+  padding_before: 0
+  padding_after: 0
