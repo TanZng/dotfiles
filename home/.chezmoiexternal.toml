@@ -6,50 +6,25 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
-[".config/powerlevel10k"]
-    type = "git-repo"
-    url = "https://github.com/romkatv/powerlevel10k.git"
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
     refreshPeriod = "168h"
 
-[".config/zsh/plugins/zsh-sudo/zsh-sudo.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh"
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
     refreshPeriod = "168h"
 
-[".config/zsh/plugins/kubectl/zsh-kubectl.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/kubectl/kubectl.plugin.zsh"
-    refreshPeriod = "168h"
-
-[".config/zsh/plugins/minikube/zsh-minikube.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/minikube/minikube.plugin.zsh"
-    refreshPeriod = "168h"
-
-[".config/zsh/plugins/helm/zsh-helm.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/helm/helm.plugin.zsh"
-    refreshPeriod = "168h"
-
-{{- if eq .chezmoi.osRelease.id "arch" }}
-
-[".config/zsh/plugins/archlinux/zsh-archlinux.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/archlinux/archlinux.plugin.zsh"
-    refreshPeriod = "168h"
-{{- end }}
-
-{{- if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
-
-[".config/zsh/plugins/debian/zsh-debian.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/debian/debian.plugin.zsh"
-    refreshPeriod = "168h"
-{{- end }}
-
-[".config/zsh/plugins/zsh-asdf/zsh-asdf.zsh"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/asdf/asdf.plugin.zsh"
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
     refreshPeriod = "168h"
 
 [".asdf"]

@@ -33,11 +33,9 @@ Supported OS
 
 ZSH
 
-- [zsh-asdf](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) - installed using `.chezmoiexternal`
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [zsh-sudo](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) - installed using `.chezmoiexternal`
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k) - installed using [.chezmoiexternal.toml](/home/.chezmoiexternal.toml)
+- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh) - installed using `.chezmoiexternal`
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) - installed using `.chezmoiexternal`
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - installed using `.chezmoiexternal`
 
 Utils
 

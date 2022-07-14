@@ -1,0 +1,66 @@
+colors:
+  $fg: "#08f"
+  $directory: "linear-gradient(#0ff, $fg)"
+  $git: brightCyan
+  $gitAhead: brightGreen
+  $gitBehind: brightRed
+  $gitDiverged: brightYellow
+prompt:
+  type: block
+  modules:
+    - type: time
+      style: brightBlack
+    - type: block
+      style: $directory
+      template: "{{ with .Text }}[{{ . }}]{{end}}"
+      modules:
+        - type: block
+          join: "@"
+          modules:
+            - type: username
+            - type: hostname
+        - type: directory
+          style: bold
+    - type: block
+      id: git
+      style: brightYellow
+      modules:
+        - type: block
+          modules:
+            - type: git_head
+            - type: git_diverged
+            - type: git_state
+              template: "{{ with .Text }}|{{ . }}{{end}}"
+          template: |
+            {{- with .Data.Modules -}}
+              {{- if .git_head.Text -}}
+                {{- $gitStyles := dict
+                  "upToDate" "$git"
+                  "ahead" "$gitAhead"
+                  "behind" "$gitBehind"
+                  "diverged" "$gitDiverged"
+                -}}
+                {{- $gitInfo := printf "%s %s%s" .git_head.Text .git_diverged.Text .git_state.Text -}}
+                {{- style (get $gitStyles .git_diverged.Data.AheadBehind) $gitInfo -}}
+              {{- end -}}
+            {{- end -}}
+        - type: git_status
+      template: "{{ with .Text }}[{{ . }}]{{end}}"
+    - type: project
+      style: "#555"
+      # template: |
+      #   w/{{- printf "%s@%s" .Data.ToolSymbol .Data.ToolVersion | style .Data.ProjectStyle -}}
+      #   {{- if .Data.PackageManagerVersion -}}
+      #     /{{- printf "%s@%s" .Data.PackageManagerSymbol .Data.PackageManagerVersion | style .Data.ProjectStyle -}}
+      #   {{- end -}}
+    - type: kubernetes
+      style: $fg
+      conditions:
+        ifFiles: ['helm', 'charts']
+    - type: command_duration
+      style: brightYellow
+    - type: jobs
+      style: $fg
+    - type: prompt
+      style: $fg
+      errorStyle: brightRed
