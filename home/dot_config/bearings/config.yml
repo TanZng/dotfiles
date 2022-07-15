@@ -30,6 +30,11 @@ modules:
 - type: git
   bg: 'yellow'
   fg: '#313244'
+  icon_modified: ''
+  icon_staged: ''
+  icon_conflicts: '✘'
+  icon_stashed: ''
+  icon_untracked: ''
 - type: command
   bg: '#45475a'
 - type: languages

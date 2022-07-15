@@ -31,6 +31,7 @@ plugins=(
     yarn
     zsh-autosuggestions
     zsh-completions
+    fzf-zsh-plugin
     zsh-syntax-highlighting
     )
 
