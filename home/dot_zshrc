@@ -118,11 +118,13 @@ bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-# Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
-# (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
-# source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
+# SETUPS
 [[ -f $HOME/.ctx/ctx.sh ]] && . $HOME/.ctx/ctx.sh
 [[ -f $HOME/.ctx/ctx_completion.sh ]] &&  . $HOME/.ctx/ctx_completion.sh
+
+export USER_ID=$(id -u) 
+export GROUP_ID=$(id -g)
+export DOCKERHOST=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
 
 #bearings-auto:start
 function preexec() {
@@ -148,3 +150,8 @@ function configure_bearings() {
 }
 [ ! "$TERM" = "linux" ] && precmd_functions+=(configure_bearings)
 #bearings-auto:end
+
+# bit
+export PATH="$PATH:/home/tanx/bin"
+# bit end
+. $HOME/.asdf/asdf.sh
