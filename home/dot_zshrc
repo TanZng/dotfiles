@@ -152,6 +152,6 @@ function configure_bearings() {
 #bearings-auto:end
 
 # bit
-export PATH="$PATH:/home/tanx/bin"
+# export PATH="$PATH:/home/tanx/bin"
 # bit end
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh

@@ -6,10 +6,10 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
-[".oh-my-zsh"]
-    type = "git-repo"
-    url = "https://github.com/ohmyzsh/ohmyzsh.git"
-    refreshPeriod = "168h"
+#[".oh-my-zsh"]
+#    type = "git-repo"
+#    url = "https://github.com/ohmyzsh/ohmyzsh.git"
+#    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
     type = "archive"
@@ -39,7 +39,7 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
-[".asdf"]
-    type = "git-repo"
-    url = "https://github.com/asdf-vm/asdf.git"
-    refreshPeriod = "168h"
+#[".asdf"]
+#    type = "git-repo"
+#    url = "https://github.com/asdf-vm/asdf.git"
+#    refreshPeriod = "168h"
