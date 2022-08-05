@@ -1,9 +1,12 @@
 -- example file i.e lua/custom/init.lua
+-- load your options globals, autocmds here or anything .__.
+-- you can even override default options here (core/options.lua)
 
--- load your globals, autocmds here or anything .__.
+local fn = vim.fn
+local g = vim.g
 
-if vim.fn.has "wsl" == 1 then
-  vim.g.clipboard = {
+if fn.has "wsl" == 1 then
+  g.clipboard = {
       copy = {
         ["+"] = "/mnt/c/tools/neovim/nvim-win64/bin/win32yank.exe -i --crlf",
         ["*"] = "/mnt/c/tools/neovim/nvim-win64/bin/win32yank.exe -i --crlf",
@@ -15,4 +18,4 @@ if vim.fn.has "wsl" == 1 then
     }
 end
 
-vim.g.transparent_enabled = true
+g.transparent_enabled = true
