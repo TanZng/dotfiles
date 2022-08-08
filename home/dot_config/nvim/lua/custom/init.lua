@@ -17,5 +17,3 @@ if fn.has "wsl" == 1 then
       },
     }
 end
-
-g.transparent_enabled = true

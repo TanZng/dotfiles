@@ -2,61 +2,57 @@
 
 local M = {}
 
--- make sure you maintain the structure of `core/default_config.lua` here,
--- example of changing theme:
-
-M.treesitter = {
-   ensure_installed = {
-      "go",
-   },
-}
-
-M.nvimtree = {
-   open_on_setup = true,
-   filters = {
-      dotfiles = true,
-   },
-   git = {
-      enable = true,
-      ignore = false,
-   },
-   view = {
-      width = 20,
-      hide_root_folder = false,
-   },
-   renderer = {
-      highlight_git = true,
-   },  
-   icons = {
-      show = {
-        git = true,
-      },
-   },
-}
-
 M.ui = {
    theme = "catppuccin",
    transparency = true,
 }
 
 M.plugins = {
+   override = {
+      ["kyazdani42/nvim-tree.lua"] = {
+         open_on_setup = true,
+         ignore_ft_on_setup = {},
+         git = {
+             enable = true,
+         },
+         renderer = {
+             highlight_git = true,
+             icons = {
+               show = {
+                  git = true,
+               },
+             },
+         },
+      },
+      ["nvim-treesitter/nvim-treesitter"] = {
+         ensure_installed = {
+             "go",
+         },
+      },
+   },
    user = {
+      ["kyazdani42/nvim-tree.lua"] = {
+         after = "nvim-web-devicons",
+      },
+      ["folke/which-key.nvim"] = {
+         disable = false,
+      },
       ["goolord/alpha-nvim"] = {
          disable = false,
       },
       ["neovim/nvim-lspconfig"] = {
-         config = function()
-           require "plugins.configs.lspconfig"
-           require "custom.plugins.lspconfig"
-         end,
-       },
-       ["jose-elias-alvarez/null-ls.nvim"] = {
-         after = "nvim-lspconfig",
-         config = function()
-           require "custom.plugins.null-ls"
-         end,
-       },
-   },
+          config = function()
+            require "plugins.configs.lspconfig"
+            require "custom.plugins.lspconfig"
+          end,
+      },
+      ["jose-elias-alvarez/null-ls.nvim"] = {
+          after = "nvim-lspconfig",
+          config = function()
+              require "custom.plugins.null-ls"
+          end,
+      },
+  },
 }
 
 return M
