@@ -1,0 +1,34 @@
+# Beryllium
+
+spacing         = 3
+hide_ascii      = true
+key_color       = "Blue"
+separator       = ""
+
+[box]
+title           = " info.sh "
+border          = "rounded"
+visible         = true
+
+[palette]
+glyph           = "  " 
+visible         = true
+
+[bar]
+glyph           = "◉"
+hide_delimiters = true
+visible         = true
+
+[box.inner_margin]
+x               = 2
+y               = 1
+
+[keys]
+os              = "os"
+kernel          = "kernel"
+terminal        = "terminal"
+shell           = "shell"
+memory          = "memory"
+machine         = "machine"
+resolution      = "resolution"
+cpu_load        = "cpu"
