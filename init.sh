@@ -58,6 +58,8 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
 asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
+nix-env -iA nixpkgs.colima nixpkgs.minikube nixpkgs.docker-client
+
 # Stow .config files
 stow zsh
 stow git
