@@ -4,18 +4,29 @@ genSshKey()
 {
     read -p "Enter your email: " email
     read -p "Enter output file name: " filename
-    ssh-keygen -t ed25519 -C $email -f $filename
+    ssh-keygen -t ed25519 -C $email -f ~/.ssh/$filename
     eval "$(ssh-agent -s)"
-    pbcopy < "~/.ssh/${filename}.pub"
+    pbcopy < ~/.ssh/$filename.pub
     echo -e "Public ssh key already on clipboard\n"
 }
 
-# zsh4humans
+zsh4humans()
+{
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
 else
   sh -c "$(wget -O- https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
 fi
+}
+
+# zsh4humans
+read -p "Setup zsh4humans 🧑‍💻? (y/n) " yn
+
+case $yn in 
+	[yY] ) zsh4humans ;;
+    * ) echo -e "Nothing to do\n"
+esac
+
 
 # setup ssh keys
 read -p "Setup GitHub 🐱 ssh key? (y/n) " yn
@@ -26,28 +37,45 @@ case $yn in
 esac
 
 # Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+read -p "Install brew 🍺? (y/n) " yn
+
+case $yn in 
+	[yY] ) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ;;
+    * ) echo -e "Nothing to do\n"
+esac
 
 # Core utils
 brew install coreutils curl git
-brew install asdf
+brew install asdf stow
+
+# Stow .config files
+stow zsh
+stow git
+stow kitty
+stow bat
+stow glow
+stow yabai
+stow macchina
 
 # Install kitty terminal
 brew install --cask kitty
 
 # Fonts
+brew tap homebrew/cask-fonts
 brew install --cask font-fira-mono-nerd-font
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 
 # Install nix pkg manager
-sh <(curl -L https://nixos.org/nix/install)
+read -p "Install nix ❄️? (y/n) " yn
 
-nix-env -iA nixpkgs.stow
+case $yn in 
+	[yY] ) sh <(curl -L https://nixos.org/nix/install) ;;
+    * ) echo -e "Nothing to do\n"
+esac
 
 # Neovim
-nix-env -iA \ 
-  nixpkgs.neovim \
+nix-env -iA nixpkgs.neovim \
   nixpkgs.tree-sitter \
   nixpkgs.ripgrep \
   nixpkgs.lazygit \
@@ -77,13 +105,4 @@ asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
 asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
 nix-env -iA nixpkgs.colima nixpkgs.minikube nixpkgs.docker-client
-
-# Stow .config files
-stow zsh
-stow git
-stow kitty
-stow bat
-stow glow
-stow yabai
-stow macchina
 
