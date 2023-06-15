@@ -6,6 +6,7 @@ genSshKey()
     read -p "Enter output file name: " filename
     ssh-keygen -t ed25519 -C $email -f ~/.ssh/$filename
     eval "$(ssh-agent -s)"
+    ssh-add --apple-use-keychain ~/.ssh/$filename
     pbcopy < ~/.ssh/$filename.pub
     echo -e "Public ssh key already on clipboard\n"
 }

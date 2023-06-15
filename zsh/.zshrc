@@ -123,9 +123,7 @@ setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
+. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 # End Nix
 
 export PATH=$PATH:~/.spicetify

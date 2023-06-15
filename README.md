@@ -11,8 +11,8 @@ Clone this repo in the home directory and run:
 ### Details
 
 Supported OS:
-- 🐧 Linux
 - 🍎 MacOS 
+- 🐧 Linux
 
 |||
 |-------|----|
