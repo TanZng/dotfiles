@@ -1,11 +1,29 @@
 #!/bin/bash
 
+genSshKey()
+{
+    read -p "Enter your email: " email
+    read -p "Enter output file name: " filename
+    ssh-keygen -t ed25519 -C $email -f $filename
+    eval "$(ssh-agent -s)"
+    pbcopy < "~/.ssh/${filename}.pub"
+    echo -e "Public ssh key already on clipboard\n"
+}
+
 # zsh4humans
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
 else
   sh -c "$(wget -O- https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
 fi
+
+# setup ssh keys
+read -p "Setup GitHub 🐱 ssh key? (y/n) " yn
+
+case $yn in 
+	[yY] ) genSshKey ;;
+    * ) echo -e "Nothing to do\n"
+esac
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
