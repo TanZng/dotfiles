@@ -20,15 +20,6 @@ else
 fi
 }
 
-# zsh4humans
-read -p "Setup zsh4humans 🧑‍💻? (y/n) " yn
-
-case $yn in 
-	[yY] ) zsh4humans ;;
-    * ) echo -e "Nothing to do\n"
-esac
-
-
 # setup ssh keys
 read -p "Setup GitHub 🐱 ssh key? (y/n) " yn
 
@@ -71,9 +62,11 @@ brew install --cask font-jetbrains-mono-nerd-font
 read -p "Install nix ❄️? (y/n) " yn
 
 case $yn in 
-	[yY] ) sh <(curl -L https://nixos.org/nix/install) ;;
+	[yY] ) bash <(curl -L https://nixos.org/nix/install) --daemon ;;
     * ) echo -e "Nothing to do\n"
 esac
+
+. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 
 # Neovim
 nix-env -iA nixpkgs.neovim \
@@ -107,3 +100,10 @@ asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
 nix-env -iA nixpkgs.colima nixpkgs.minikube nixpkgs.docker-client
 
+# zsh4humans
+read -p "Setup zsh4humans 🧑‍💻? (y/n) " yn
+
+case $yn in 
+	[yY] ) zsh4humans ;;
+    * ) echo -e "Nothing to do\n"
+esac
