@@ -11,6 +11,19 @@ genSshKey()
     echo -e "Public ssh key already on clipboard\n"
 }
 
+windowManagerSetup()
+{
+    brew install koekeishiya/formulae/skhd
+    skhd --start-service
+   
+    brew install koekeishiya/formulae/yabai
+    yabai --start-service
+    
+    stow yabai
+    stow skhd
+}
+
+
 zsh4humans()
 {
 if command -v curl >/dev/null 2>&1; then
@@ -38,7 +51,7 @@ esac
 
 # Core utils
 brew install coreutils curl git
-brew install asdf stow
+brew install asdf stow gotop
 
 # Stow .config files
 stow zsh
@@ -46,7 +59,6 @@ stow git
 stow kitty
 stow bat
 stow glow
-stow yabai
 stow macchina
 
 # Install kitty terminal
@@ -58,8 +70,12 @@ brew install --cask font-fira-mono-nerd-font
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-jetbrains-mono-nerd-font
 
-# Install nix pkg manager
-read -p "Install nix ❄️? (y/n) " yn
+# Install window manager
+read -p "Install window manager 🪟? (y/n) " yn
+case $yn in 
+	[yY] ) windowManagerSetup ;;
+    * ) echo -e "Nothing to do\n"
+esac
 
 case $yn in 
 	[yY] ) bash <(curl -L https://nixos.org/nix/install) --daemon ;;
@@ -88,7 +104,7 @@ nix-env -iA \
   nixpkgs.glow \
   nixpkgs.macchina
 
-brew install gotop
+bat cache --build
 
 # Dev
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git

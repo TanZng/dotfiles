@@ -91,6 +91,7 @@ shift + alt - l : yabai -m window --swap east
 # flip windows
 shift + alt - y : yabai -m space --mirror y-axis
 shift + alt - x : yabai -m space --mirror x-axis
+shift + lalt - r : yabai -m space --rotate 270
 
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
@@ -148,7 +149,7 @@ shift + ctrl - 4 : yabai -m window --space  4; yabai -m space --focus 4
 
 # toggle window zoom
 # alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
+shift + lalt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
 # alt - e : yabai -m window --toggle split
