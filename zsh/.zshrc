@@ -113,7 +113,7 @@ alias vi='nvim'
 alias k='kubectl'
 alias g='git'
 alias gp='git pull origin $(git rev-parse --abbrev-ref HEAD)'
-alias gac='f(){ git add -A && git commit -m "$@" after;  unset -f f; }; f'
+alias gac='f(){ git add -A && git commit -m "$@";  unset -f f; }; f'
 
 # BAT DEFAULT
 export BAT_THEME="Catppuccin"
