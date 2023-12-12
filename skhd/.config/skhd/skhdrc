@@ -77,20 +77,20 @@
 # ############################################################### #
 
 # focus window
-alt - k : yabai -m window --focus north
-alt - j : yabai -m window --focus south
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+lalt - k : yabai -m window --focus north
+lalt - j : yabai -m window --focus south
+lalt - h : yabai -m window --focus west
+lalt - l : yabai -m window --focus east
 
 # swap managed window
-shift + alt - k : yabai -m window --swap north
-shift + alt - j : yabai -m window --swap sourth
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
+shift + lalt - k : yabai -m window --swap north
+shift + lalt - j : yabai -m window --swap sourth
+shift + lalt - h : yabai -m window --swap west
+shift + lalt - l : yabai -m window --swap east
 
 # flip windows
-shift + alt - y : yabai -m space --mirror y-axis
-shift + alt - x : yabai -m space --mirror x-axis
+shift + lalt - y : yabai -m space --mirror y-axis
+shift + lalt - x : yabai -m space --mirror x-axis
 shift + lalt - r : yabai -m space --rotate 270
 
 # move managed window
@@ -155,7 +155,7 @@ shift + lalt - f : yabai -m window --toggle zoom-fullscreen
 # alt - e : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+lalt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # toggle sticky(+float), topmost, picture-in-picture
 # alt - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
