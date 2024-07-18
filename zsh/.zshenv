@@ -40,6 +40,23 @@ if [ ! -e "$Z4H"/z4h.zsh ]; then
   mv -- "$Z4H"/z4h.zsh.$$ "$Z4H"/z4h.zsh || return
 fi
 
+#AWSume alias to source the AWSume script
+alias awsume="source awsume"
+
+#Auto-Complete function for AWSume
+fpath=(~/.awsume/zsh-autocomplete/ $fpath)
+
+# Dark Mode check
+alias darkMode="2>/dev/null defaults read -g AppleInterfaceStyle"
+if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
+  export CATPPUCCIN_THEME="Catppuccin-light"
+  export FZF_DEFAULT_OPTS=" --ansi --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39,fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78,marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+else
+  export CATPPUCCIN_THEME="Catppuccin-dark"
+  export FZF_DEFAULT_OPTS=" --ansi --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#74C7EC"
+fi
+
 . "$Z4H"/z4h.zsh || return
 
 setopt rcs
+

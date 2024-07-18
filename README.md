@@ -14,14 +14,14 @@ Supported OS:
 - 🍎 MacOS 
 - 🐧 Linux
 
-|||
-|-------|----|
-|Shell|zsh|
-|Shell Prompt|[powerlevel10k](https://github.com/romkatv/powerlevel10k)|
-|Terminal|[Kitty](https://github.com/kovidgoyal/kitty)|
-|Package Manager|[nix](https://nixos.org/) + [brew](https://brew.sh/)|
-|Editor|[Neovim](https://github.com/neovim/neovim)|
-|Theme|[Catppuccin](https://github.com/catppuccin)|
+|                 |                                                           |
+| --------------- | --------------------------------------------------------- |
+| Shell           | zsh                                                       |
+| Prompt          | [powerlevel10k](https://github.com/romkatv/powerlevel10k) |
+| Terminal        | [Kitty](https://github.com/kovidgoyal/kitty)              |
+| Package Manager | [nix](https://nixos.org/) + [brew](https://brew.sh/)      |
+| Editor          | [Neovim](https://github.com/neovim/neovim)                |
+| Colorscheme     | [Catppuccin](https://github.com/catppuccin)               |
 
 ### Tools
 
@@ -36,10 +36,12 @@ Supported OS:
 - [lsd](https://github.com/Peltoche/lsd)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [glow](https://github.com/charmbracelet/glow/)
+- [macchinna](https://github.com/Macchina-CLI/macchina)
+- [gotop](https://github.com/xxxserxxx/gotop)
 
 **Neovim**
 
-- [AstroNvim](https://github.com/AstroNvim/AstroNvim) + my-dotfiles
+- [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
 **Development**
 

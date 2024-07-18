@@ -106,7 +106,7 @@ alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
 alias cat='bat'
-alias glow='glow -s ~/.config/glow/Catppuccin.json'
+alias glow='glow -s ~/.config/glow/${CATPPUCCIN_THEME}.json'
 alias tree='tree -a -I .git'
 alias vim='nvim'
 alias vi='nvim'
@@ -114,14 +114,36 @@ alias k='kubectl'
 alias g='git'
 alias gp='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias gac='f(){ git add -A && git commit -m "$@";  unset -f f; }; f'
+alias mr='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias rr='kitten themes --reload-in=all "${CATPPUCCIN_THEME}-tanx"'
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # BAT DEFAULT
-export BAT_THEME="Catppuccin"
+alias cat="bat --theme=${CATPPUCCIN_THEME}"
 
 # FZF DEFAULT
-export FZF_DEFAULT_OPTS=" --ansi --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#74C7EC"
-export FZF_DEFAULT_COMMAND=' --hidden --ignore .git -g'
-export FZF_PREVIEW_PREVIEW_BAT_THEME="Catppuccin"
+source <(fzf --zsh)
+export FZF_PREVIEW_PREVIEW_BAT_THEME=${CATPPUCCIN_THEME}
+export FZF_DEFAULT_COMMAND='--ignore .git -g'
+
+# Preview file or directory
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {} 2>/dev/null || eza -1 --color=always'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
@@ -131,5 +153,4 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 # End Nix
 
-export PATH=$PATH:~/.spicetify
-
+export PATH=$PATH:/Users/tanzuniga/.spicetify

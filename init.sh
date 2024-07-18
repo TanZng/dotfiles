@@ -51,7 +51,7 @@ esac
 
 # Core utils
 brew install coreutils curl git
-brew install asdf stow gotop
+brew install asdf stow gotop fzf
 
 # Stow .config files
 stow zsh

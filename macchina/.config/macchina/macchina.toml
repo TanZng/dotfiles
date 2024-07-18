@@ -47,7 +47,7 @@ theme = "tanx"
 # Example:
 show = ["Machine",
         "Kernel",
-        "OperatingSystem",
+        "Processor",
         "Terminal",
         "Shell",
         "ProcessorLoad",
