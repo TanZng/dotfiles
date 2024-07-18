@@ -7,13 +7,13 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.color.transparent-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
-    { -- further customize the options set by the community
+  { -- further customize the options set by the community
     "catppuccin",
     opts = {
       flavour = "auto", -- latte, frappe, macchiato, mocha
       background = { -- :h background
-          light = "latte",
-          dark = "mocha",
+        light = "latte",
+        dark = "mocha",
       },
       term_colors = true,
       transparent_background = true,
