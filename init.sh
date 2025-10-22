@@ -53,16 +53,22 @@ esac
 brew install coreutils curl git
 brew install asdf stow gotop fzf
 
-# Stow .config files
-stow zsh
-stow git
-stow kitty
-stow bat
-stow glow
-stow macchina
+# Stow folders
+# Loop over all non-hidden directories
+for dir in */ ; do
+    # Remove trailing slash
+    dirname="${dir%/}"
+
+    # Skip hidden directories (starting with .)
+    [[ "$dirname" == .* ]] && continue
+
+    echo "Running stow on: $dirname"
+    stow "$dirname"
+done
 
 # Install kitty terminal
 brew install --cask kitty
+brew install --cask vscodium
 
 # Fonts
 brew tap homebrew/cask-fonts
@@ -107,12 +113,16 @@ nix-env -iA \
 bat cache --build
 
 # Dev
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
-asdf plugin-add python https://github.com/asdf-community/asdf-python.git
-asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin add python https://github.com/asdf-community/asdf-python.git
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
+
+asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
+asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin add helmfile https://github.com/feniix/asdf-helmfile.git
+
+asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
+asdf plugin add awscli https://github.com/asdf-community/asdf-hashicorp.git
 
 nix-env -iA nixpkgs.colima nixpkgs.minikube nixpkgs.docker-client
 

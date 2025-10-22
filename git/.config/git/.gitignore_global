@@ -1,0 +1,23 @@
+# macOS junk
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Terraform (be careful here!)
+.terraform/
+*.tfplan
+
+# Crush https://github.com/charmbracelet/crush
+.crush/
