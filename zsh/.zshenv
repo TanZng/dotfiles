@@ -60,3 +60,5 @@ fi
 
 setopt rcs
 
+# uv
+export PATH="/Users/tanzuniga/.local/bin:$PATH"
