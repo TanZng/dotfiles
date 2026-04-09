@@ -57,3 +57,15 @@ MacOS:
 - JetbrainsMono Nerd Font
 - Fira Code Nerd Font
 
+### Custom Commands
+
+**Theme Management**
+
+- `rt` - Refresh theme (re-detects macOS dark/light mode and updates all Kitty windows)
+
+**Git Shortcuts**
+
+- `gac <message>` - Git add all and commit with message
+- `gp` - Git pull from current branch
+- `mr` - Git push to current branch (merge request)
+
