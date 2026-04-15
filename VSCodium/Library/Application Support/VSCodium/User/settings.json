@@ -1,0 +1,102 @@
+{
+  // Automatic Formatting Configuration
+  //
+  // Formatters by language:
+  // - Python: Ruff (charliermarsh.ruff)
+  // - Go: gopls with goimports (golang.go)
+  // - Terraform: terraform fmt (hashicorp.terraform)
+  // - YAML: Red Hat YAML (redhat.vscode-yaml)
+  // - Helm: Helm Language Server (helm-ls.helm-ls)
+  // - Bash/Shell: shfmt (mkhl.shfmt)
+  //
+  // Required extensions (install via: codium --install-extension <id>):
+  // - charliermarsh.ruff
+  // - mkhl.shfmt
+  // - golang.go
+  // - hashicorp.terraform
+  // - redhat.vscode-yaml
+  // - helm-ls.helm-ls
+  //
+  // System dependencies:
+  // - shfmt: installed via brew
+  // Theme & UI Settings
+  "catppuccin.accentColor": "sapphire",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.preferredHighContrastLightColorTheme": "Catppuccin Latte",
+  "workbench.preferredHighContrastColorTheme": "Catppuccin Latte",
+  "window.autoDetectHighContrast": false,
+  "window.autoDetectColorScheme": true,
+  "window.zoomLevel": 2,
+  "workbench.navigationControl.enabled": false,
+  // Editor Global Settings
+  "editor.fontFamily": "JetBrainsMono Nerd Font, Material Icons, Consolas, monospace",
+  "editor.fontSize": 13,
+  "editor.formatOnSave": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.largeFileOptimizations": false,
+  // Terminal Settings
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.fontWeight": "normal",
+  // File Handling
+  "files.insertFinalNewline": true,
+  // Language-Specific Settings
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.formatOnSave": true
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced"
+  },
+  "[helm]": {
+    "editor.defaultFormatter": "helm-ls.helm-ls",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  // Extension-Specific Settings
+  // Go
+  "go.formatTool": "gofmt",
+  // Ruff (Python)
+  "ruff.nativeServer": true,
+  // Red Hat YAML
+  "redhat.telemetry.enabled": false,
+  // Workspace/Security Settings
+  "security.workspace.trust.untrustedFiles": "open",
+  "http.proxyStrictSSL": true,
+  "json.schemaDownload.enable": true,
+  "window.newWindowProfile": "Default",
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://esm.sh": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  }
+}
