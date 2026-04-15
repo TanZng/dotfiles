@@ -21,3 +21,7 @@ __pycache__/
 
 # Crush https://github.com/charmbracelet/crush
 .crush/
+
+# Claude Code
+**/.claude/settings.local.json
+**/.claude/plan.md
