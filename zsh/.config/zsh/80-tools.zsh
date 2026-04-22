@@ -5,13 +5,12 @@ alias awsume="source awsume"
 
 # FZF Configuration
 source <(fzf --zsh)
-export FZF_PREVIEW_PREVIEW_BAT_THEME=${CATPPUCCIN_THEME}
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 
 # Preview file or directory
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
-  --preview 'bat -n --color=always {} 2>/dev/null || eza -1 --color=always'
+  --preview 'bat -n --color=always --theme=\"\$BAT_THEME\" {} 2>/dev/null ||  tree -L 2 -C {} 2>/dev/null || ls -la {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # CTRL-Y to copy the command into clipboard using pbcopy
@@ -23,11 +22,11 @@ export FZF_CTRL_R_OPTS="
 
 # Nix Package Manager
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+	. '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
 # asdf Version Manager
 if [ -d "$HOME/.asdf" ]; then
-  export ASDF_DATA_DIR="$HOME/.asdf"
-  export PATH="$ASDF_DATA_DIR/shims:$PATH"
+	export ASDF_DATA_DIR="$HOME/.asdf"
+	export PATH="$ASDF_DATA_DIR/shims:$PATH"
 fi

@@ -6,15 +6,15 @@
 
 # Periodic auto-update on Zsh startup: 'ask' or 'no'.
 # You can manually run `z4h update` to update everything.
-zstyle ':z4h:' auto-update      'no'
+zstyle ':z4h:' auto-update 'no'
 # Ask whether to auto-update this often; has no effect if auto-update is 'no'.
 zstyle ':z4h:' auto-update-days '28'
 
 # Keyboard type: 'mac' or 'pc'.
-zstyle ':z4h:bindkey' keyboard  'mac'
+zstyle ':z4h:bindkey' keyboard 'mac'
 
 # Don't start tmux.
-zstyle ':z4h:' start-tmux       no
+zstyle ':z4h:' start-tmux no
 
 # Mark up shell's output with semantic information.
 zstyle ':z4h:' term-shell-integration 'yes'
@@ -24,20 +24,21 @@ zstyle ':z4h:' term-shell-integration 'yes'
 zstyle ':z4h:autosuggestions' forward-char 'accept'
 
 # Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:*' fzf-command fzf
 zstyle ':z4h:fzf-complete' recurse-dirs 'no'
 zstyle ':z4h:*' fzf-flags --color=hl:1,hl+:1
 
 # Enable direnv to automatically source .envrc files.
-zstyle ':z4h:direnv'         enable 'no'
+zstyle ':z4h:direnv' enable 'no'
 # Show "loading" and "unloading" notifications from direnv.
 zstyle ':z4h:direnv:success' notify 'yes'
 
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # SSH when connecting to these hosts.
-zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
+zstyle ':z4h:ssh:example-hostname1' enable 'yes'
 zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
 # The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'                   enable 'no'
+zstyle ':z4h:ssh:*' enable 'no'
 
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
@@ -60,8 +61,11 @@ z4h init || return
 # z4h source ~/.env.zsh
 z4h source -- ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh}
 
+# Load fzf-tab for TAB completion with previews
+z4h source ~/.config/zsh/plugins/fzf-tab/fzf-tab.zsh
+
 # Source modular configuration files
 # Files are loaded in numeric order (10, 20, 30, ...)
 for config_file in ~/.config/zsh/*.zsh(N); do
-  z4h source "$config_file"
+	z4h source "$config_file"
 done

@@ -23,4 +23,4 @@ alias mr='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias rt='refresh-theme'
 
 # BAT
-alias cat="bat --theme=${CATPPUCCIN_THEME}"
+alias cat="bat"
