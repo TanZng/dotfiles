@@ -6,7 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.color.transparent-nvim", enabled = true },
-  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
+  { import = "astrocommunity.colorscheme.catppuccin" },
   { -- further customize the options set by the community
     "catppuccin",
     opts = {
@@ -24,9 +24,10 @@ return {
       transparent_background = true,
       default_integrations = true,
       integrations = {
+        neotree = true,
+        which_key = true,
         cmp = true,
         gitsigns = true,
-        nvimtree = true,
         treesitter = true,
         notify = false,
         mini = {
@@ -43,6 +44,8 @@ return {
         lsp_trouble = true,
         rainbow_delimiters = true,
         gitgraph = true,
+        toggleterm = true,
+        mason = true,
       },
     },
   },
