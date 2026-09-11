@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    ["{env:WORK_PLUGINS_ROOT}/api-key-helper/plugin.ts", {
+      "providerID": "gridx-gateway",
+      "command": "{env:WORK_HELPER_PATH}"
+    }],
+    "{env:WORK_PLUGINS_ROOT}/litellm-model-sync/plugin.ts",
+    "{env:WORK_PLUGINS_ROOT}/disable-unconfigured-providers/plugin.ts"
+  ],
+  "provider": {
+    "gridx-gateway": {
+      "name": "gridX AI Gateway",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "{env:WORK_AI_GATEWAY}"
+      }
+    },
+    "ollama": {
+      "name": "Ollama (local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:30b": { "name": "Qwen3 Coder 30b" },
+        "gpt-oss:20b": { "name": "GPT-OSS 20b" },
+        "orca-mini:3b": { "name": "Orca Mini 3b" },
+        "mistral:latest": { "name": "Mistral" }
+      }
+    }
+  }
+}
