@@ -5,7 +5,6 @@
   // - Python: Ruff (charliermarsh.ruff)
   // - Go: gopls with goimports (golang.go)
   // - Terraform: terraform fmt (hashicorp.terraform)
-  // - YAML: Red Hat YAML (redhat.vscode-yaml)
   // - Helm: Helm Language Server (helm-ls.helm-ls)
   // - Bash/Shell: shfmt (mkhl.shfmt)
   //
@@ -14,7 +13,6 @@
   // - mkhl.shfmt
   // - golang.go
   // - hashicorp.terraform
-  // - redhat.vscode-yaml
   // - helm-ls.helm-ls
   //
   // System dependencies:
@@ -46,13 +44,13 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.autoIndent": "advanced",
-    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": false
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -66,11 +64,8 @@
     "editor.defaultFormatter": "hashicorp.terraform",
     "editor.formatOnSave": true
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.autoIndent": "advanced"
+  "[html]": {
+    "editor.formatOnSave": false
   },
   "[helm]": {
     "editor.defaultFormatter": "helm-ls.helm-ls",
@@ -82,8 +77,6 @@
   "go.formatTool": "gofmt",
   // Ruff (Python)
   "ruff.nativeServer": true,
-  // Red Hat YAML
-  "redhat.telemetry.enabled": false,
   // Workspace/Security Settings
   "security.workspace.trust.untrustedFiles": "open",
   "http.proxyStrictSSL": true,
@@ -98,5 +91,5 @@
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true
-  }
+  },
 }
