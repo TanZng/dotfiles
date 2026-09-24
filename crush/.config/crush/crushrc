@@ -1,0 +1,14 @@
+GATEWAY_API_KEY=$(bash -c "$API_KEY_HELPER_PATH")
+
+provider add work-gateway \
+  --type openai-compat \
+  --name "work AI Gateway" \
+  --base-url "$WORK_AI_GATEWAY" \
+  --api-key "$GATEWAY_API_KEY" \
+  --discover-models true
+
+provider add ollama --type ollama --base-url "http://localhost:11434/v1" --discover-models true
+
+model large work-gateway/claude-opus-4-6 --think
+
+option ui transparent true
