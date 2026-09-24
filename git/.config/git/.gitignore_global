@@ -20,7 +20,7 @@ __pycache__/
 *.tfplan
 
 # Crush https://github.com/charmbracelet/crush
-.crush/
+.crush/**
 
 # Claude Code
 **/.claude/settings.local.json
